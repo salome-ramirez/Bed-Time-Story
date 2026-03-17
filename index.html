@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bed Time Story</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <span class="nav-title">Bed Time Story</span>
+  </nav>
+
+  <header>
+    <h1>Bed Time Story</h1>
+    <p>Text placeholder</p>
+    <p>Data: NSCH 2016–2019 | YRBS 2013–2023 | BRFSS 2014–2022 | NHANES 2017–2018</p>
+  </header>
+
+  <main>
+
+    <!-- CHILDREN -->
+    <section class="age-section" id="children">
+      <div class="section-header">
+        <img src="images/Child.svg" class="section-img" alt="Child illustration">
+        <div>
+          <div class="age-label">
+            <span class="age-num">01</span>
+            <span class="age-tag">Ages 6–12</span>
+          </div>
+          <h2 class="section-title">Children</h2>
+          <p class="section-deck">Text placeholder</p>
+        </div>
+      </div>
+      <div class="chart-block">
+        <div class="chart-meta">
+          <h3 class="chart-title">Sleep habits</h3>
+        </div>
+        <div id="chart-children-dist" class="chart-container"></div>
+      </div>
+      <div class="chart-block">
+        <div class="chart-meta">
+          <h3 class="chart-title">Short sleep by condition</h3>
+        </div>
+        <div id="chart-children" class="chart-container"></div>
+      </div>
+    </section>
+
+    <!-- TEENAGERS -->
+    <section class="age-section" id="teenagers">
+      <div class="section-header">
+        <img src="images/Teenager.svg" class="section-img" alt="Teenager illustration">
+        <div>
+          <div class="age-label">
+            <span class="age-num">02</span>
+            <span class="age-tag">Ages 13–17</span>
+          </div>
+          <h2 class="section-title">Teenagers</h2>
+          <p class="section-deck">Text placeholder</p>
+        </div>
+      </div>
+      <div class="chart-block">
+        <div class="chart-meta">
+          <h3 class="chart-title">Sleep habits</h3>
+        </div>
+        <div id="chart-teen-dist" class="chart-container"></div>
+      </div>
+      <div class="chart-block">
+        <div class="chart-meta">
+          <h3 class="chart-title">Sleep and mental health outcomes</h3>
+        </div>
+        <div id="chart-teenagers" class="chart-container"></div>
+      </div>
+    </section>
+
+    <!-- YOUNG ADULTS -->
+    <section class="age-section" id="young-adults">
+      <div class="section-header">
+        <img src="images/Young_Adult.svg" class="section-img" alt="Young adult illustration">
+        <div>
+          <div class="age-label">
+            <span class="age-num">03</span>
+            <span class="age-tag">Ages 18–25</span>
+          </div>
+          <h2 class="section-title">Young Adults</h2>
+          <p class="section-deck">Text placeholder</p>
+        </div>
+      </div>
+      <div class="chart-block">
+        <div class="chart-meta">
+          <h3 class="chart-title">Sleep habits</h3>
+        </div>
+        <div id="chart-young-adult-dist" class="chart-container"></div>
+      </div>
+      <div class="chart-block">
+        <div class="chart-meta">
+          <h3 class="chart-title">Depression rates by age group</h3>
+        </div>
+        <div id="chart-ya-depression" class="chart-container"></div>
+      </div>
+      <div class="chart-block">
+        <div class="chart-meta">
+          <h3 class="chart-title">Health conditions by sleep status</h3>
+        </div>
+        <div id="chart-ya-health" class="chart-container"></div>
+      </div>
+    </section>
+
+    <!-- ADULTS -->
+    <section class="age-section" id="adults">
+      <div class="section-header">
+        <img src="images/Adult.svg" class="section-img" alt="Adult illustration">
+        <div>
+          <div class="age-label">
+            <span class="age-num">04</span>
+            <span class="age-tag">Ages 26–64</span>
+          </div>
+          <h2 class="section-title">Adults</h2>
+          <p class="section-deck">Text placeholder</p>
+        </div>
+      </div>
+      <div class="chart-block">
+        <div class="chart-meta">
+          <h3 class="chart-title">Sleep habits</h3>
+        </div>
+        <div id="chart-adult-dist" class="chart-container"></div>
+      </div>
+      <div class="chart-block">
+        <div class="chart-meta">
+          <h3 class="chart-title">Health conditions by sleep status</h3>
+        </div>
+        <div id="chart-adult-health" class="chart-container"></div>
+      </div>
+    </section>
+
+    <!-- OLDER ADULTS -->
+    <section class="age-section" id="older-adults">
+      <div class="section-header">
+        <img src="images/Senior.svg" class="section-img" alt="Senior illustration">
+        <div>
+          <div class="age-label">
+            <span class="age-num">05</span>
+            <span class="age-tag">Ages 65+</span>
+          </div>
+          <h2 class="section-title">Older Adults</h2>
+          <p class="section-deck">Text placeholder</p>
+        </div>
+      </div>
+      <div class="chart-block">
+        <div class="chart-meta">
+          <h3 class="chart-title">Sleep habits</h3>
+        </div>
+        <div id="chart-older-dist" class="chart-container"></div>
+      </div>
+      <div class="chart-block">
+        <div class="chart-meta">
+          <h3 class="chart-title">Health conditions by sleep status</h3>
+        </div>
+        <div id="chart-older-health" class="chart-container"></div>
+      </div>
+    </section>
+
+    <!-- CLOSING OVERVIEW -->
+    <section class="age-section" id="overview">
+      <div class="section-header">
+        <h2 class="section-title">Overview</h2>
+        <p class="section-deck">Text placeholder</p>
+      </div>
+      <div class="chart-block">
+        <div class="chart-meta">
+          <h3 class="chart-title">Health conditions by age group and sleep status</h3>
+        </div>
+        <div id="chart-heatmap" class="chart-container"></div>
+      </div>
+      <div class="chart-block">
+        <div class="chart-meta">
+          <h3 class="chart-title">Condition prevalence among short sleepers</h3>
+        </div>
+        <div id="chart-bubble" class="chart-container"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-title">Sources</p>
+      <ul class="footer-sources">
+        <li>National Survey of Children's Health (NSCH) 2016–2019. Claussen et al. <em>Prev Chronic Dis</em> 2023;20:220408.</li>
+        <li>Youth Risk Behavior Survey (YRBS) Data Summary & Trends Report 2013–2023. CDC, 2025.</li>
+        <li>Verlenden et al. Mental Health and Suicide Risk Among High School Students. <em>MMWR Suppl</em> 2024;73(4).</li>
+        <li>Behavioral Risk Factor Surveillance System (BRFSS) 2020–2022. CDC FastStats: Sleep in Adults.</li>
+        <li>National Health and Nutrition Examination Survey (NHANES) 2017–2018. CDC/NCHS.</li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="charts.js"></script>
+</body>
+</html>

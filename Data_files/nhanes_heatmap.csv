@@ -1,0 +1,9 @@
+age_group,sleep_status,Hypertension,Prediabetes or diabetes,Obesity
+18-25,short,4.3,10.4,42.6
+18-25,adequate,7.0,7.6,30.0
+26-44,short,20.6,30.4,49.6
+26-44,adequate,15.5,21.4,41.0
+45-64,short,47.1,58.8,45.1
+45-64,adequate,40.9,51.1,43.6
+65+,short,59.8,70.8,38.3
+65+,adequate,64.3,67.6,38.6

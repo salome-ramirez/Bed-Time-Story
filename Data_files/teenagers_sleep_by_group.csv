@@ -1,0 +1,13 @@
+group,group_type,year,pct_sufficient_sleep
+Male,sex,2013,35
+Male,sex,2023,25
+Female,sex,2013,29
+Female,sex,2023,22
+Multiracial,race,2013,32
+Multiracial,race,2023,17
+Black,race,2013,30
+Black,race,2023,19
+Hispanic,race,2013,33
+Hispanic,race,2023,24
+Asian,race,2013,28
+Asian,race,2023,19

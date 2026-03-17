@@ -1,0 +1,9 @@
+group,group_type,pct_short_sleep,threshold_hrs
+Men,sex,37,7
+Adults 45-64,age,39,7
+Native Hawaiian or Pacific Islander,race,49,7
+Non-Hispanic Black,race,46.0,6
+American Indian or Alaska Native,race,44.8,6
+Non-Hispanic White,race,31.7,6
+Vermont,state,30,7
+Hawaii,state,46,7
