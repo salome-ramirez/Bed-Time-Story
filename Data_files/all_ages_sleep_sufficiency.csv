@@ -1,0 +1,7 @@
+age_group,pct_insufficient,pct_sufficient,rec_hrs,source
+Ages 6–12,37.5,62.5,9–12 hrs,NSCH 2016–2018 (Claussen et al. Prev Chronic Dis 2023)
+Ages 13–17,77.0,23.0,8–10 hrs,YRBS 2023 (CDC 2025)
+Ages 18–25,19.5,80.5,7–9 hrs,NHANES 2017–2018 (CDC/NCHS)
+Ages 26–44,27.3,72.7,7–9 hrs,NHANES 2017–2018 (CDC/NCHS)
+Ages 45–64,29.7,70.3,7–9 hrs,NHANES 2017–2018 (CDC/NCHS)
+Ages 65+,26.3,73.7,7–8 hrs,BRFSS 2014 (CDC FastStats)

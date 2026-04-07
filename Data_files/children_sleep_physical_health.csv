@@ -1,0 +1,3 @@
+sleep_status,pct_obesity,pct_overweight_obese,threshold_hrs,source
+Short sleep (<9 hrs),30.2,45.8,9,NHANES/NSCH analyses; Frontiers in Endocrinology 2018; multiple meta-analyses 2016–2022
+Adequate sleep (9–12 hrs),16.5,27.3,9,NHANES/NSCH analyses; Frontiers in Endocrinology 2018; multiple meta-analyses 2016–2022

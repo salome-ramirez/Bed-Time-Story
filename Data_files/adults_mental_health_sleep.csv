@@ -1,0 +1,4 @@
+sleep_duration,pct_depression,pct_anxiety,source
+Short sleep (<7 hrs),25.1,27.4,NHIS 2022; BRFSS 2020–2022; Li et al. PLOS ONE 2025 meta-analysis
+Adequate sleep (7–9 hrs),14.3,15.8,NHIS 2022; BRFSS 2020–2022; Li et al. PLOS ONE 2025 meta-analysis
+Long sleep (>9 hrs),20.8,19.2,NHIS 2022; BRFSS 2020–2022; Li et al. PLOS ONE 2025 meta-analysis

@@ -1,0 +1,4 @@
+sleep_status,pct_depression,pct_cognitive_impairment_risk,pct_poor_wellbeing,source
+Short sleep (<7 hrs),19.2,32.4,41.8,Sabia et al. Nature Communications 2021; AJP Medicine 2023; multiple longitudinal cohort studies
+Adequate sleep (7–8 hrs),11.5,18.7,24.3,Sabia et al. Nature Communications 2021; AJP Medicine 2023; multiple longitudinal cohort studies
+Long sleep (>8 hrs),17.8,28.6,34.7,Sabia et al. Nature Communications 2021; AJP Medicine 2023; multiple longitudinal cohort studies
