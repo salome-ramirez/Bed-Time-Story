@@ -461,12 +461,11 @@ body {
 }
 
 .bar {
-  fill: var(--ink);
   transition: fill 0.2s;
 }
 
 .bar:hover {
-  fill: var(--lavender);
+  opacity: 0.8;
 }
 
 .lollipop-line {
@@ -475,7 +474,7 @@ body {
 }
 
 .lollipop-dot {
-  fill: var(--ink);
+  /* fill set by D3 */
 }
 
 .line-path {
@@ -490,7 +489,7 @@ body {
 }
 
 .dot {
-  fill: var(--ink);
+  /* fill set by D3 */
 }
 
 .annotation {
