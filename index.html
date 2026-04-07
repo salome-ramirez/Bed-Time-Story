@@ -8,195 +8,398 @@
 </head>
 <body>
 
-  <nav class="site-nav">
-    <span class="nav-title">Bed Time Story</span>
-  </nav>
+  <!-- HERO -->
+  <section id="hero">
+    <video autoplay muted loop playsinline id="hero-video">
+      <source src="Images/Starry-Night.mp4" type="video/mp4">
+    </video>
+    <div id="hero-overlay"></div>
+    <div id="hero-content">
+      <p id="hero-eyebrow">A data story about sleep in America</p>
+      <h1 id="hero-title">Bed Time Story</h1>
+      <p id="hero-subtitle">One in three Americans doesn't get enough sleep. Across every stage of life, the cost is being paid — in classrooms, in clinics, and in years.</p>
+      <div id="scroll-cue">
+        <span>Scroll to begin</span>
+        <div id="scroll-arrow"></div>
+      </div>
+    </div>
+  </section>
 
-  <header>
-    <h1>Bed Time Story</h1>
-    <p>Text placeholder</p>
-    <p>Data: NSCH 2016–2019 | YRBS 2013–2023 | BRFSS 2014–2022 | NHANES 2017–2018</p>
-  </header>
+  <!-- SCROLLYTELLING MAIN -->
+  <main id="story">
 
-  <main>
+    <!-- Timeline rail (sits between sticky left and scrolly right) -->
+    <nav id="timeline-rail" aria-label="Age group navigation">
+      <div id="timeline-line"></div>
+      <button class="timeline-dot active" data-chapter="children"    aria-label="Children 6–12">
+        <span class="dot-label">Children</span>
+      </button>
+      <button class="timeline-dot" data-chapter="teenagers"   aria-label="Teenagers 13–17">
+        <span class="dot-label">Teenagers</span>
+      </button>
+      <button class="timeline-dot" data-chapter="youngadults" aria-label="Young Adults 18–25">
+        <span class="dot-label">Young Adults</span>
+      </button>
+      <button class="timeline-dot" data-chapter="adults"      aria-label="Adults 26–64">
+        <span class="dot-label">Adults</span>
+      </button>
+      <button class="timeline-dot" data-chapter="olderadults" aria-label="Older Adults 65+">
+        <span class="dot-label">Older Adults</span>
+      </button>
+    </nav>
 
-    <!-- CHILDREN -->
-    <section class="age-section" id="children">
-      <div class="section-header">
-        <img src="Images/Child.svg" class="section-img" alt="Child illustration">
-        <div>
-          <div class="age-label">
-            <span class="age-num">01</span>
-            <span class="age-tag">Ages 6–12</span>
-          </div>
-          <h2 class="section-title">Children</h2>
-          <p class="section-deck">Text placeholder</p>
-        </div>
+    <!-- Sticky left panel (swaps content per chapter via JS) -->
+    <aside id="sticky-panel">
+      <div id="chapter-figure">
+        <!-- SVG swapped by JS -->
+        <img id="chapter-svg" src="Images/Child.svg" alt="Child silhouette">
       </div>
-      <div class="chart-block">
-        <div class="chart-meta">
-          <h3 class="chart-title">Sleep habits</h3>
-        </div>
-        <div id="chart-children-dist" class="chart-container"></div>
+      <div id="chapter-meta">
+        <p id="chapter-ages">Ages 6–12</p>
+        <h2 id="chapter-title">Children</h2>
+        <p id="chapter-stat"></p>
       </div>
-      <div class="chart-block">
-        <div class="chart-meta">
-          <h3 class="chart-title">Short sleep by condition</h3>
-        </div>
-        <div id="chart-children" class="chart-container"></div>
+      <p id="chapter-intro"></p>
+      <div id="chapter-progress">
+        <!-- filled by JS: dots showing which chart within chapter is active -->
       </div>
-    </section>
+    </aside>
 
-    <!-- TEENAGERS -->
-    <section class="age-section" id="teenagers">
-      <div class="section-header">
-        <img src="Images/Teenager.svg" class="section-img" alt="Teenager illustration">
-        <div>
-          <div class="age-label">
-            <span class="age-num">02</span>
-            <span class="age-tag">Ages 13–17</span>
-          </div>
-          <h2 class="section-title">Teenagers</h2>
-          <p class="section-deck">Text placeholder</p>
-        </div>
-      </div>
-      <div class="chart-block">
-        <div class="chart-meta">
-          <h3 class="chart-title">Sleep habits</h3>
-        </div>
-        <div id="chart-teen-dist" class="chart-container"></div>
-      </div>
-      <div class="chart-block">
-        <div class="chart-meta">
-          <h3 class="chart-title">Sleep and mental health outcomes</h3>
-        </div>
-        <div id="chart-teenagers" class="chart-container"></div>
-      </div>
-    </section>
+    <!-- Scrolly right: all five chapters flow here -->
+    <div id="scrolly-content">
 
-    <!-- YOUNG ADULTS -->
-    <section class="age-section" id="young-adults">
-      <div class="section-header">
-        <img src="Images/Young_Adult.svg" class="section-img" alt="Young adult illustration">
-        <div>
-          <div class="age-label">
-            <span class="age-num">03</span>
-            <span class="age-tag">Ages 18–25</span>
-          </div>
-          <h2 class="section-title">Young Adults</h2>
-          <p class="section-deck">Text placeholder</p>
-        </div>
+      <!-- OVERVIEW CHART -->
+      <div class="scroll-step chart-step" style="padding-top:60px;">
+        <h3 class="chart-title">Sleep sufficiency across all age groups</h3>
+        <div class="chart-container" id="chart-all-ages"></div>
       </div>
-      <div class="chart-block">
-        <div class="chart-meta">
-          <h3 class="chart-title">Sleep habits</h3>
-        </div>
-        <div id="chart-young-adult-dist" class="chart-container"></div>
-      </div>
-      <div class="chart-block">
-        <div class="chart-meta">
-          <h3 class="chart-title">Depression rates by age group</h3>
-        </div>
-        <div id="chart-ya-depression" class="chart-container"></div>
-      </div>
-      <div class="chart-block">
-        <div class="chart-meta">
-          <h3 class="chart-title">Health conditions by sleep status</h3>
-        </div>
-        <div id="chart-ya-health" class="chart-container"></div>
-      </div>
-    </section>
 
-    <!-- ADULTS -->
-    <section class="age-section" id="adults">
-      <div class="section-header">
-        <img src="Images/Adult.svg" class="section-img" alt="Adult illustration">
-        <div>
-          <div class="age-label">
-            <span class="age-num">04</span>
-            <span class="age-tag">Ages 26–64</span>
-          </div>
-          <h2 class="section-title">Adults</h2>
-          <p class="section-deck">Text placeholder</p>
-        </div>
-      </div>
-      <div class="chart-block">
-        <div class="chart-meta">
-          <h3 class="chart-title">Sleep habits</h3>
-        </div>
-        <div id="chart-adult-dist" class="chart-container"></div>
-      </div>
-      <div class="chart-block">
-        <div class="chart-meta">
-          <h3 class="chart-title">Health conditions by sleep status</h3>
-        </div>
-        <div id="chart-adult-health" class="chart-container"></div>
-      </div>
-    </section>
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <!-- CHAPTER 1: CHILDREN -->
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <article class="chapter" data-chapter="children">
 
-    <!-- OLDER ADULTS -->
-    <section class="age-section" id="older-adults">
-      <div class="section-header">
-        <img src="Images/Senior.svg" class="section-img" alt="Senior illustration">
-        <div>
-          <div class="age-label">
-            <span class="age-num">05</span>
-            <span class="age-tag">Ages 65+</span>
-          </div>
-          <h2 class="section-title">Older Adults</h2>
-          <p class="section-deck">Text placeholder</p>
+        <div class="scroll-step">
+          <p class="step-text">Children ages 6 to 12 need between 9 and 12 hours of sleep per night. Yet a substantial portion fall short — and the consequences show up not just in the morning, but in the classroom and the doctor's office.</p>
         </div>
-      </div>
-      <div class="chart-block">
-        <div class="chart-meta">
-          <h3 class="chart-title">Sleep habits</h3>
-        </div>
-        <div id="chart-older-dist" class="chart-container"></div>
-      </div>
-      <div class="chart-block">
-        <div class="chart-meta">
-          <h3 class="chart-title">Health conditions by sleep status</h3>
-        </div>
-        <div id="chart-older-health" class="chart-container"></div>
-      </div>
-    </section>
 
-    <!-- CLOSING OVERVIEW -->
-    <section class="age-section" id="overview">
-      <div class="section-header">
-        <h2 class="section-title">Overview</h2>
-        <p class="section-deck">Text placeholder</p>
-      </div>
-      <div class="chart-block">
-        <div class="chart-meta">
-          <h3 class="chart-title">Health conditions by age group and sleep status</h3>
+        <div class="scroll-step chart-step" data-chart="children-sleep">
+          <h3 class="chart-title">How many children meet sleep guidelines?</h3>
+          <div class="chart-container" id="chart-children-sleep"></div>
         </div>
-        <div id="chart-heatmap" class="chart-container"></div>
-      </div>
-      <div class="chart-block">
-        <div class="chart-meta">
-          <h3 class="chart-title">Condition prevalence among short sleepers</h3>
+
+        <div class="scroll-step">
+          <p class="step-text">Short sleep in children doesn't just cause tiredness. It's strongly associated with behavioral and attention disorders — conditions that affect learning and development at a critical window.</p>
         </div>
-        <div id="chart-bubble" class="chart-container"></div>
+
+        <div class="scroll-step chart-step" data-chart="children-mental">
+          <h3 class="chart-title">Short sleep and behavioral health conditions</h3>
+          <div class="chart-container" id="chart-children-mental"></div>
+        </div>
+
+        <div class="scroll-step">
+          <p class="step-text">The physical effects compound over time. Children who consistently sleep less show higher rates of obesity, and the relationship holds even when controlling for physical activity levels.</p>
+        </div>
+
+        <div class="scroll-step chart-step" data-chart="children-physical">
+          <h3 class="chart-title">Sleep duration and weight status</h3>
+          <div class="chart-container" id="chart-children-physical"></div>
+        </div>
+
+      </article>
+
+      <!-- section break -->
+      <div class="chapter-break">
+        <div class="break-line"></div>
       </div>
-    </section>
+
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <!-- CHAPTER 2: TEENAGERS -->
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <article class="chapter" data-chapter="teenagers">
+
+        <div class="scroll-step">
+          <p class="step-text">No age group is losing more sleep than teenagers. Biological clock shifts, school start times, and screens have converged to produce a generation running on chronic deficit. The data is stark.</p>
+        </div>
+
+        <div class="scroll-step chart-step" data-chart="teens-sleep">
+          <h3 class="chart-title">Teen sleep hours, 2013–2023</h3>
+          <div class="chart-container" id="chart-teens-sleep"></div>
+        </div>
+
+        <div class="scroll-step">
+          <p class="step-text">The mental health toll is the most dramatic of any age group. Teens who sleep fewer than 8 hours report feelings of sadness and hopelessness at nearly twice the rate of those meeting guidelines.</p>
+        </div>
+
+        <div class="scroll-step chart-step" data-chart="teens-mental">
+          <h3 class="chart-title">Mental health indicators among high school students</h3>
+          <div class="chart-container" id="chart-teens-mental"></div>
+        </div>
+
+        <div class="scroll-step">
+          <p class="step-text">The decline has not been equal. Boys started higher in 2013 and have fallen further. Girls were already sleeping less and have continued to drop — both now well below the 8-hour guideline.</p>
+        </div>
+
+        <div class="scroll-step chart-step" data-chart="teens-by-sex">
+          <h3 class="chart-title">% getting sufficient sleep by sex, 2013 vs 2023</h3>
+          <div class="chart-container" id="chart-teens-by-sex"></div>
+        </div>
+
+        <div class="scroll-step">
+          <p class="step-text">Physical activity also suffers — a feedback loop where tired teens exercise less, which makes sleep quality worse, which makes them more tired.</p>
+        </div>
+
+        <div class="scroll-step chart-step" data-chart="teens-physical">
+          <h3 class="chart-title">Physical activity rates by sleep sufficiency</h3>
+          <div class="chart-container" id="chart-teens-physical"></div>
+        </div>
+
+      </article>
+
+      <!-- section break -->
+      <div class="chapter-break">
+        <div class="break-line"></div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <!-- CHAPTER 3: YOUNG ADULTS -->
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <article class="chapter" data-chapter="youngadults">
+
+        <div class="scroll-step">
+          <p class="step-text">Young adults face a transition: the mental health consequences of adolescent sleep deprivation don't disappear — they're joined by the first signs of physical consequences. Work, college, and social life keep the sleep debt growing.</p>
+        </div>
+
+        <div class="scroll-step chart-step" data-chart="youngadults-sleep">
+          <h3 class="chart-title">Short sleep prevalence, ages 18–34</h3>
+          <div class="chart-container" id="chart-youngadults-sleep"></div>
+        </div>
+
+        <div class="scroll-step">
+          <p class="step-text">Depression rates among chronically sleep-deprived young adults are significantly elevated. This age group also shows the sharpest response to even modest improvements in sleep duration.</p>
+        </div>
+
+        <div class="scroll-step chart-step" data-chart="youngadults-mental">
+          <h3 class="chart-title">Depression prevalence by sleep hours</h3>
+          <div class="chart-container" id="chart-youngadults-mental"></div>
+        </div>
+
+        <div class="scroll-step">
+          <p class="step-text">Physical health ratings begin to diverge. Young adults sleeping fewer than 6 hours are significantly more likely to rate their own health as fair or poor — a self-assessment that predicts longer-term outcomes.</p>
+        </div>
+
+        <div class="scroll-step chart-step" data-chart="youngadults-physical">
+          <h3 class="chart-title">Self-rated health by sleep category</h3>
+          <div class="chart-container" id="chart-youngadults-physical"></div>
+        </div>
+
+      </article>
+
+      <!-- section break -->
+      <div class="chapter-break">
+        <div class="break-line"></div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <!-- CHAPTER 4: ADULTS -->
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <article class="chapter" data-chapter="adults">
+
+        <div class="scroll-step">
+          <p class="step-text">By middle age, sleep deprivation has had years to accumulate. The consequences shift from behavioral and mood-based to cardiovascular and metabolic — measurable in bloodwork and medical records.</p>
+        </div>
+
+        <div class="scroll-step chart-step" data-chart="adults-sleep">
+          <h3 class="chart-title">Sleep duration across the adult lifespan</h3>
+          <div class="chart-container" id="chart-adults-sleep"></div>
+        </div>
+
+        <div class="scroll-step">
+          <p class="step-text">Depression remains a significant correlate, but the strongest mental health signal at this stage is the compounding effect — adults who have been sleep-deprived since their twenties show persistently elevated risk.</p>
+        </div>
+
+        <div class="scroll-step chart-step" data-chart="adults-mental">
+          <h3 class="chart-title">Depression prevalence by sleep category</h3>
+          <div class="chart-container" id="chart-adults-mental"></div>
+        </div>
+
+        <div class="scroll-step">
+          <p class="step-text">Cardiovascular markers tell the clearest story. Blood pressure and blood sugar both show dose-response relationships with sleep duration — more deprivation, worse numbers.</p>
+        </div>
+
+        <div class="scroll-step chart-step" data-chart="adults-physical">
+          <h3 class="chart-title">Blood pressure and HbA1c by sleep hours</h3>
+          <div class="chart-container" id="chart-adults-physical"></div>
+        </div>
+
+        <div class="scroll-step chart-step" data-chart="adults-heatmap">
+          <h3 class="chart-title">Sleep and health outcomes — heatmap</h3>
+          <div class="chart-container" id="chart-adults-heatmap"></div>
+        </div>
+
+      </article>
+
+      <!-- section break -->
+      <div class="chapter-break">
+        <div class="break-line"></div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <!-- CHAPTER 5: OLDER ADULTS -->
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <article class="chapter" data-chapter="olderadults">
+
+        <div class="scroll-step">
+          <p class="step-text">Among adults 65 and older, the sleep story shifts again. Total sleep time often increases — but quality degrades. Sleep disorders become common. And the consequences now include cognitive decline.</p>
+        </div>
+
+        <div class="scroll-step chart-step" data-chart="older-sleep">
+          <h3 class="chart-title">Sleep sufficiency rates, 65+</h3>
+          <div class="chart-container" id="chart-older-sleep"></div>
+        </div>
+
+        <div class="scroll-step">
+          <p class="step-text">Cognitive concern and depression rates among older adults track closely with sleep quality. The relationship between sleep disruption and dementia risk has become one of the most active areas of sleep research.</p>
+        </div>
+
+        <div class="scroll-step chart-step" data-chart="older-mental">
+          <h3 class="chart-title">Cognitive concern by sleep sufficiency</h3>
+          <div class="chart-container" id="chart-older-mental"></div>
+        </div>
+
+        <div class="scroll-step">
+          <p class="step-text">Physical health markers among older poor sleepers show elevated rates of cardiovascular disease, diabetes, and obesity — the accumulated cost of a lifetime of insufficient sleep.</p>
+        </div>
+
+        <div class="scroll-step chart-step" data-chart="older-physical">
+          <h3 class="chart-title">Chronic condition prevalence by sleep category</h3>
+          <div class="chart-container" id="chart-older-physical"></div>
+        </div>
+
+      </article>
+
+    </div>
+    <!-- end #scrolly-content -->
 
   </main>
+  <!-- end #story -->
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <p class="footer-title">Sources</p>
-      <ul class="footer-sources">
-        <li>National Survey of Children's Health (NSCH) 2016–2019. Claussen et al. <em>Prev Chronic Dis</em> 2023;20:220408.</li>
-        <li>Youth Risk Behavior Survey (YRBS) Data Summary & Trends Report 2013–2023. CDC, 2025.</li>
-        <li>Verlenden et al. Mental Health and Suicide Risk Among High School Students. <em>MMWR Suppl</em> 2024;73(4).</li>
-        <li>Behavioral Risk Factor Surveillance System (BRFSS) 2020–2022. CDC FastStats: Sleep in Adults.</li>
-        <li>National Health and Nutrition Examination Survey (NHANES) 2017–2018. CDC/NCHS.</li>
-      </ul>
+
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+var chapterData = {
+  children:    { svg:"Images/Child.svg",       alt:"Child",        ages:"Ages 6-12",  title:"Children",     stat:"Only 57% of children ages 6-12 meet the recommended 9-12 hours of sleep.",         intro:"Sleep shapes the developing brain more than any other age group. Short sleep in childhood is linked to attention disorders, behavioral problems, and obesity." },
+  teenagers:   { svg:"Images/Teenager.svg",    alt:"Teenager",     ages:"Ages 13-17", title:"Teenagers",    stat:"Over 77% of high school students sleep fewer than 8 hours on school nights.",        intro:"Teens face a perfect storm: biological clock shifts, early school start times, and screens. The mental health consequences are the most dramatic of any age group." },
+  youngadults: { svg:"Images/Young_Adult.svg", alt:"Young adult",  ages:"Ages 18-25", title:"Young Adults", stat:"35% of adults 18-34 report regularly getting fewer than 7 hours of sleep.",          intro:"Work, school, and social life compete with sleep. Mental health consequences carry over from adolescence, and the first physical warning signs begin to appear." },
+  adults:      { svg:"Images/Adult.svg",       alt:"Adult",        ages:"Ages 26-64", title:"Adults",       stat:"1 in 3 working-age adults in the US is chronically sleep-deprived.",                  intro:"By middle age, years of short sleep begin to show in cardiovascular markers, blood sugar levels, and metabolic health. The consequences are measurable in a blood test." },
+  olderadults: { svg:"Images/Senior.svg",      alt:"Older adult",  ages:"Ages 65+",   title:"Older Adults", stat:"50-60% of older adults experience significant sleep disruption.",                     intro:"Sleep architecture changes with age. Quality degrades even as time in bed increases. The most serious emerging risk: links between poor sleep and cognitive decline." }
+};
+
+var chartCounts = {
+  children:    3,
+  teenagers:   4,
+  youngadults: 3,
+  adults:      4,
+  olderadults: 3
+};
+
+var currentChapter = null;
+
+function updateStickyPanel(id) {
+  if (id === currentChapter) return;
+  currentChapter = id;
+  var d = chapterData[id];
+  if (!d) return;
+  var img = document.getElementById("chapter-svg");
+  img.style.opacity = "0";
+  setTimeout(function() { img.src = d.svg; img.alt = d.alt; img.style.opacity = "1"; }, 200);
+  document.getElementById("chapter-ages").textContent  = d.ages;
+  document.getElementById("chapter-title").textContent = d.title;
+  document.getElementById("chapter-stat").textContent  = d.stat;
+  document.getElementById("chapter-intro").textContent = d.intro;
+  var el = document.getElementById("chapter-progress");
+  el.innerHTML = "";
+  for (var i = 0; i < (chartCounts[id] || 0); i++) {
+    var dot = document.createElement("div");
+    dot.className = "progress-dot";
+    dot.dataset.index = i;
+    el.appendChild(dot);
+  }
+}
+
+function updateTimelineDot(id) {
+  document.querySelectorAll(".timeline-dot").forEach(function(btn) {
+    btn.classList.toggle("active", btn.dataset.chapter === id);
+  });
+}
+
+function updateProgressDots(id, idx) {
+  document.querySelectorAll(".progress-dot").forEach(function(dot) {
+    dot.classList.toggle("active", parseInt(dot.dataset.index) === idx);
+  });
+}
+
+document.querySelectorAll(".timeline-dot").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    var t = document.querySelector(".chapter[data-chapter='" + btn.dataset.chapter + "']");
+    if (t) t.scrollIntoView({ behavior:"smooth", block:"start" });
+  });
+});
+
+var chapterObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      updateStickyPanel(e.target.dataset.chapter);
+      updateTimelineDot(e.target.dataset.chapter);
+    }
+  });
+}, { rootMargin: "-5% 0px -40% 0px", threshold: 0 });
+
+document.querySelectorAll(".chapter").forEach(function(ch) {
+  chapterObs.observe(ch);
+});
+
+var stepObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (!e.isIntersecting) return;
+    var ch = e.target.closest(".chapter");
+    if (!ch) return;
+    var steps = ch.querySelectorAll(".chart-step");
+    updateProgressDots(ch.dataset.chapter, Array.prototype.indexOf.call(steps, e.target));
+  });
+}, { rootMargin: "-10% 0px -40% 0px", threshold: 0 });
+
+document.querySelectorAll(".chart-step").forEach(function(s) {
+  stepObs.observe(s);
+});
+
+updateStickyPanel("children");
+updateTimelineDot("children");
+  </script>
+  <script src="charts.js"></script>
+
+  <!-- CLOSING SECTION -->
+  <footer id="closing">
+    <div id="closing-inner">
+      <h2 id="closing-headline">Sleep is not a luxury. It's infrastructure.</h2>
+      <p id="closing-body">Across every stage of life — from the developing brain of a six-year-old to the aging mind of a seventy-year-old — sleep deprivation leaves a measurable mark. The consequences are not abstract. They show up in classrooms, in emergency rooms, in blood pressure readings, and in the gradual erosion of memory and cognition that comes with age.</p>
+      <p id="closing-body-2">The data collected tell a consistent story: we are a chronically under-slept country, and the cost compounds across a lifetime. Children who sleep less struggle more in school. Teenagers carry mental health burdens that follow them into adulthood. Working-age adults develop cardiovascular and metabolic conditions at measurably higher rates. And older adults face an accelerated risk of cognitive decline.</p>
+      <p id="closing-body-3">The good news is that sleep is modifiable. Unlike many health risk factors, it responds to behavioral change, policy reform, and public awareness. The first step is understanding the scale of the problem — which is what this data attempts to show.</p>
+      <div id="sources">
+        <h3>Data sources</h3>
+        <ul>
+          <li>CDC BRFSS 2022 — Behavioral Risk Factor Surveillance System</li>
+          <li>CDC YRBS 2023 — Youth Risk Behavior Survey</li>
+          <li>CDC NSCH 2022 — National Survey of Children's Health</li>
+          <li>NHANES 2017–2020 — National Health and Nutrition Examination Survey</li>
+          <li>Sabia et al. — Nature Communications 2021</li>
+          <li>Verlenden et al. — MMWR Supplement 2024</li>
+          <li>Claussen et al. — Preventing Chronic Disease 2023</li>
+        </ul>
+      </div>
     </div>
   </footer>
 
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="charts.js"></script>
 </body>
 </html>
