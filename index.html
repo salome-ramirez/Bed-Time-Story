@@ -1,405 +1,419 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bed Time Story</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bed Time Story</title>
+    <link rel="stylesheet" href="style.css?v=8">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section id="hero">
-    <video autoplay muted loop playsinline id="hero-video">
-      <source src="Images/Starry-Night.mp4" type="video/mp4">
-    </video>
-    <div id="hero-overlay"></div>
-    <div id="hero-content">
-      <p id="hero-eyebrow">A data story about sleep in America</p>
-      <h1 id="hero-title">Bed Time Story</h1>
-      <p id="hero-subtitle">One in three Americans doesn't get enough sleep. Across every stage of life, the cost is being paid — in classrooms, in clinics, and in years.</p>
-      <div id="scroll-cue">
-        <span>Scroll to begin</span>
-        <div id="scroll-arrow"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SCROLLYTELLING MAIN -->
-  <main id="story">
-
-    <!-- Timeline rail (sits between sticky left and scrolly right) -->
-    <nav id="timeline-rail" aria-label="Age group navigation">
-      <div id="timeline-line"></div>
-      <button class="timeline-dot active" data-chapter="children"    aria-label="Children 6–12">
-        <span class="dot-label">Children</span>
-      </button>
-      <button class="timeline-dot" data-chapter="teenagers"   aria-label="Teenagers 13–17">
-        <span class="dot-label">Teenagers</span>
-      </button>
-      <button class="timeline-dot" data-chapter="youngadults" aria-label="Young Adults 18–25">
-        <span class="dot-label">Young Adults</span>
-      </button>
-      <button class="timeline-dot" data-chapter="adults"      aria-label="Adults 26–64">
-        <span class="dot-label">Adults</span>
-      </button>
-      <button class="timeline-dot" data-chapter="olderadults" aria-label="Older Adults 65+">
-        <span class="dot-label">Older Adults</span>
-      </button>
+    <nav id="timeline-rail" aria-label="Chapter navigation">
+        <ol class="timeline-list">
+            <li class="timeline-item" data-target="prologue"><a href="#prologue"><span class="timeline-dot"></span><span class="timeline-label">Prologue</span></a></li>
+            <li class="timeline-item" data-target="chapter-1"><a href="#chapter-1"><span class="timeline-dot"></span><span class="timeline-label">I. Children</span></a></li>
+            <li class="timeline-item" data-target="chapter-2"><a href="#chapter-2"><span class="timeline-dot"></span><span class="timeline-label">II. Teenagers</span></a></li>
+            <li class="timeline-item" data-target="chapter-3"><a href="#chapter-3"><span class="timeline-dot"></span><span class="timeline-label">III. Young Adult</span></a></li>
+            <li class="timeline-item" data-target="chapter-4"><a href="#chapter-4"><span class="timeline-dot"></span><span class="timeline-label">IV. Adult</span></a></li>
+            <li class="timeline-item" data-target="chapter-5"><a href="#chapter-5"><span class="timeline-dot"></span><span class="timeline-label">V. Senior</span></a></li>
+            <li class="timeline-item" data-target="finale"><a href="#finale"><span class="timeline-dot"></span><span class="timeline-label">Your Place</span></a></li>
+        </ol>
     </nav>
 
-    <!-- Sticky left panel (swaps content per chapter via JS) -->
-    <aside id="sticky-panel">
-      <div id="chapter-figure">
-        <!-- SVG swapped by JS -->
-        <img id="chapter-svg" src="Images/Child.svg" alt="Child silhouette">
-      </div>
-      <div id="chapter-meta">
-        <p id="chapter-ages">Ages 6–12</p>
-        <h2 id="chapter-title">Children</h2>
-        <p id="chapter-stat"></p>
-      </div>
-      <p id="chapter-intro"></p>
-      <div id="chapter-progress">
-        <!-- filled by JS: dots showing which chart within chapter is active -->
-      </div>
-    </aside>
+    <section id="landing">
+        <video autoplay loop muted playsinline id="video-bg">
+            <source src="Images/Starry-Night.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
 
-    <!-- Scrolly right: all five chapters flow here -->
-    <div id="scrolly-content">
-
-      <!-- OVERVIEW CHART -->
-      <div class="scroll-step chart-step" style="padding-top:60px;">
-        <h3 class="chart-title">Sleep sufficiency across all age groups</h3>
-        <div class="chart-container" id="chart-all-ages"></div>
-      </div>
-
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- CHAPTER 1: CHILDREN -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <article class="chapter" data-chapter="children">
-
-        <div class="scroll-step">
-          <p class="step-text">Children ages 6 to 12 need between 9 and 12 hours of sleep per night. Yet a substantial portion fall short — and the consequences show up not just in the morning, but in the classroom and the doctor's office.</p>
+        <div class="landing-content">
+            <p class="landing-kicker">JMM 629 Final Project</p>
+            <h1 class="landing-title">Bed Time<br>Story</h1>
+            <p class="landing-subtitle">Sleep is essential at every age. This chronicle details exactly how much sleep Americans actually get and the toll it takes on their bodies and minds from age six to eighty-five.</p>
+            <p class="landing-scroll-cue">scroll to begin reading &darr;</p>
         </div>
+    </section>
 
-        <div class="scroll-step chart-step" data-chart="children-sleep">
-          <h3 class="chart-title">How many children meet sleep guidelines?</h3>
-          <div class="chart-container" id="chart-children-sleep"></div>
+    <section id="prologue">
+        <div class="prologue-inner">
+            <p class="prologue-drop">S</p>
+            <p class="prologue-text">leep is one of the few things the body cannot do without. The hours we spend in it are when growth happens, when memories are filed, when the immune system is rebuilt, when the brain clears the day's accumulated waste. None of that is optional. And yet at every age, on every night, most Americans are short.</p>
+            <p class="prologue-text">This piece walks through five life stages (childhood, adolescence, young adulthood, adulthood, and older age) to ask two consistent questions of each: How much do they sleep? And what suffers when they fall short?</p>
         </div>
+    </section>
 
-        <div class="scroll-step">
-          <p class="step-text">Short sleep in children doesn't just cause tiredness. It's strongly associated with behavioral and attention disorders — conditions that affect learning and development at a critical window.</p>
+    <article class="chapter" id="chapter-1" data-chapter="1">
+        <div class="chapter-grid">
+
+            <aside class="chapter-anchor">
+                <div class="anchor-inner">
+                    <p class="chapter-numeral">I</p>
+                    <p class="chapter-kicker">ages 6 to 12</p>
+                    <h2 class="chapter-title">Children</h2>
+                    <p class="chapter-epigraph">Most American children still meet their baseline sleep needs. Those who fall short reveal the costs in diminished attention spans, excess body weight, and more days lost to sickness.</p>
+
+                    <div class="anchor-illustration">
+                        <img src="Images/2_Child.png" alt="A child sitting on the edge of the bed at bedtime.">
+                    </div>
+
+                    <div class="anchor-stat">
+                        <p class="stat-number">57<span class="stat-unit">%</span></p>
+                        <p class="stat-label">of American children aged 6 to 12 meet the recommended 9 to 12 hours of sleep on weeknights.<br><span class="stat-source">National Survey of Children's Health, 2020.</span></p>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="chapter-flow">
+
+                <div class="flow-intro">
+                    <p>When the lights go out, the pituitary gland goes to work. The deepest stages of childhood sleep are when growth hormone is released, when memories from the day are filed, when the immune system is rebuilt. Most of the body's construction happens after dark.</p>
+                    <p>The American Academy of Sleep Medicine recommends nine to twelve hours each night for children aged six to twelve. A little over half of American children get there.</p>
+                </div>
+
+                <figure class="plate" id="plate-1-1">
+                    <div class="plate-canvas" id="canvas-1-1">
+                    </div>
+                    <figcaption class="plate-caption">Each child represents a single star. Distance from the moon equals hours short of the recommended ten. The cluster near the moon represents the well-rested group. The stars scattered in the outer rings illustrate the cost, representing children whose nights are far too short.</figcaption>
+                </figure>
+
+                <div class="flow-prose">
+                    <p>The shape of the orbit immediately reveals the finding. Most children cluster close to the moon, nearing the recommended hours. Yet the outer rings are not empty. A meaningful share of American children sleep seven hours, six hours, or even less on school nights. These are the children the rest of this story will follow.</p>
+                </div>
+
+                <figure class="plate" id="plate-1-2">
+                    <div class="plate-canvas plate-canvas--paper" id="canvas-1-2">
+                    </div>
+                    <figcaption class="plate-caption">Attention scores on standardized tests, by hours of sleep. The ridge for ten-hour sleepers sits squarely above the average; the ridge for short sleepers leans well below it.</figcaption>
+                </figure>
+
+                <div class="flow-prose">
+                    <p>The mental cost of short sleep at this age is paid in the classroom. Attention spans collapse. Behavioral problems rise. Memory consolidation, which depends on the deepest stages of the night, never quite finishes its work.</p>
+                </div>
+
+                <figure class="plate" id="plate-1-3">
+                    <div class="plate-canvas plate-canvas--paper" id="canvas-1-3">
+                    </div>
+                    <figcaption class="plate-caption">BMI percentile against hours of sleep. The pattern is not a coincidence and not subtle: the children who sleep less are also more likely to be carrying excess weight.</figcaption>
+                </figure>
+
+                <div class="flow-prose flow-closing">
+                    <p>This is the baseline. The night a child does not get is the night the body cannot replace. And those who miss it, that smaller, harder-to-see group, are the ones whose deficit will compound for the rest of this story.</p>
+                </div>
+
+            </div>
         </div>
+    </article>
 
-        <div class="scroll-step chart-step" data-chart="children-mental">
-          <h3 class="chart-title">Short sleep and behavioral health conditions</h3>
-          <div class="chart-container" id="chart-children-mental"></div>
+    <article class="chapter" id="chapter-2" data-chapter="2">
+        <div class="chapter-grid">
+
+            <aside class="chapter-anchor">
+                <div class="anchor-inner">
+                    <p class="chapter-numeral">II</p>
+                    <p class="chapter-kicker">ages 13 to 17</p>
+                    <h2 class="chapter-title">Teenagers</h2>
+                    <p class="chapter-epigraph">Sleep collapses during adolescence. This drop is the steepest in the human lifespan, tracking closely alongside rising teenage anxiety.</p>
+
+                    <div class="anchor-illustration">
+                        <img src="Images/5_Teenager.png" alt="A teenager at a bus stop in the early morning, looking tired.">
+                    </div>
+
+                    <div class="anchor-stat">
+                        <p class="stat-number">77<span class="stat-unit">%</span></p>
+                        <p class="stat-label">of American high schoolers sleep less than 8 hours on a school night, the recommended minimum for their age.<br><span class="stat-source">CDC Youth Risk Behavior Survey, 2021.</span></p>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="chapter-flow">
+
+                <div class="flow-intro">
+                    <p>At puberty, two things happen at once. The body's circadian clock shifts later by about two hours. And the school day, in most American districts, begins before 8 a.m. The body and the bell are out of phase.</p>
+                    <p>The result is the steepest sleep collapse in the human lifespan. American children average just under ten hours a night. American teenagers average under seven. The drop happens in the space of one or two grade levels.</p>
+                </div>
+
+                <figure class="plate" id="plate-2-1">
+                    <div class="plate-canvas" id="canvas-2-1">
+                    </div>
+                    <figcaption class="plate-caption">The orbit, three years later. The recommended hours remain unchanged, as nine hours is still the published minimum for adolescents. However, actual sleep hours have collapsed inward.</figcaption>
+                </figure>
+
+                <div class="flow-prose">
+                    <p>The childhood orbit, plotted here on the same scale, now resembles an entirely different population. The dense central cluster has migrated outward. The well-rested group, visible and large in childhood, has nearly disappeared.</p>
+                </div>
+
+                <figure class="plate" id="plate-2-2">
+                    <div class="plate-canvas plate-canvas--paper" id="canvas-2-2">
+                    </div>
+                    <figcaption class="plate-caption">Anxiety scores, on a clinical scale, against hours of sleep. The relationship is one of the most consistently replicated findings in adolescent health research.</figcaption>
+                </figure>
+
+                <div class="flow-prose">
+                    <p>Anxiety scores rise in lockstep with the loss of hours. Persistent sadness, suicidality, and academic struggle all track the same way. The teenage mental-health crisis American media has spent the last decade naming is, in part, a sleep crisis.</p>
+                </div>
+
+                <figure class="plate" id="plate-2-3">
+                    <div class="plate-canvas plate-canvas--paper" id="canvas-2-3">
+                    </div>
+                    <figcaption class="plate-caption">American teens, sorted into four groups by their nightly coping strategies. The group relying most heavily on both mechanisms (morning caffeine and nighttime screens) shows the largest deficit and highest anxiety. The body adopts coping strategies that only reinforce the original deficit.</figcaption>
+                </figure>
+
+                <div class="flow-prose flow-closing">
+                    <p>This is the steepest collapse in the human lifespan. From here forward, no chapter will show the body returning to its childhood baseline.</p>
+                </div>
+
+            </div>
         </div>
+    </article>
 
-        <div class="scroll-step">
-          <p class="step-text">The physical effects compound over time. Children who consistently sleep less show higher rates of obesity, and the relationship holds even when controlling for physical activity levels.</p>
+    <article class="chapter" id="chapter-3" data-chapter="3">
+        <div class="chapter-grid">
+
+            <aside class="chapter-anchor">
+                <div class="anchor-inner">
+                    <p class="chapter-numeral">III</p>
+                    <p class="chapter-kicker">ages 18 to 25</p>
+                    <h2 class="chapter-title">Young Adult</h2>
+                    <p class="chapter-epigraph">Young adults sleep less than the recommended minimum on most weeknights. The body keeps the record as burnout scores climb in lockstep with the lost hours.</p>
+
+                    <div class="anchor-illustration">
+                        <img src="Images/4_Adult.png" alt="A young adult studying late at night with a laptop.">
+                    </div>
+
+                    <div class="anchor-stat">
+                        <p class="stat-number">35<span class="stat-unit">%</span></p>
+                        <p class="stat-label">of American adults aged 18 to 25 report fewer than 7 hours of sleep on a typical night.<br><span class="stat-source">Behavioral Risk Factor Surveillance System, 2022.</span></p>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="chapter-flow">
+
+                <div class="flow-intro">
+                    <p>By their twenties, most Americans are sleeping less than the eight hours their bodies still need. They have learned to call six and a half hours a normal night. The body, however, has not.</p>
+                </div>
+
+                <figure class="plate" id="plate-3-1">
+                    <div class="plate-canvas" id="canvas-3-1">
+                    </div>
+                    <figcaption class="plate-caption">Each young adult is a single star. Distance from the moon represents hours short of the recommended nine. The bulk of the population sits well outside the nine-hour ring, proving chronic insufficient sleep is the modal experience of the American twenties.</figcaption>
+                </figure>
+
+                <div class="flow-prose">
+                    <p>The chapter's central finding is the relationship between those missing hours and burnout. As nightly sleep falls below seven hours, burnout scores rise sharply. As it falls below six, the curve goes vertical.</p>
+                </div>
+
+                <figure class="plate" id="plate-3-2">
+                    <div class="plate-canvas plate-canvas--paper" id="canvas-3-2">
+                    </div>
+                    <figcaption class="plate-caption">Burnout scores against weekday sleep duration, split into three bands: rested (7+ hours), average (6 to 7), and deficit (under 6). Each band's distribution shifts progressively further to the right of the canvas.</figcaption>
+                </figure>
+
+                <div class="flow-prose">
+                    <p>Burnout is not a failure of willpower. It is a biological sleep-debt arithmetic the calendar continuously runs. The body's stress response, naturally calibrated for occasional emergencies, now triggers every weekday morning, and the morning cortisol numbers prove it. Below, the rising stress hormone closely tracks the widening weekday-to-weekend sleep gap.</p>
+                </div>
+
+                <figure class="plate" id="plate-3-3">
+                    <div class="plate-canvas plate-canvas--paper" id="canvas-3-3">
+                    </div>
+                    <figcaption class="plate-caption">Morning cortisol plotted against social jet lag, representing the gap between weekday and weekend sleep. Each star represents a region of young adults, with size indicating population volume. The hormonal cost of insufficient sleep is far from theoretical.</figcaption>
+                </figure>
+
+                <div class="flow-prose flow-closing">
+                    <p>By the time American sleepers reach the end of their twenties, they largely stop registering the deficit as a problem. The body has fully adapted to chronic insufficiency rather than sufficient rest. The next chapter explores what happens when that adaptation becomes a permanent way of life.</p>
+                </div>
+
+            </div>
         </div>
+    </article>
 
-        <div class="scroll-step chart-step" data-chart="children-physical">
-          <h3 class="chart-title">Sleep duration and weight status</h3>
-          <div class="chart-container" id="chart-children-physical"></div>
+    <article class="chapter" id="chapter-4" data-chapter="4">
+        <div class="chapter-grid">
+
+            <aside class="chapter-anchor">
+                <div class="anchor-inner">
+                    <p class="chapter-numeral">IV</p>
+                    <p class="chapter-kicker">ages 26 to 64</p>
+                    <h2 class="chapter-title">Adult</h2>
+                    <p class="chapter-epigraph">For four decades, the average American sleeps under seven hours a night. The body keeps a strict record through rising blood pressure and a lengthening list of chronic conditions.</p>
+
+                    <div class="anchor-illustration">
+                        <img src="Images/1_Older Adult.png" alt="An adult standing in a kitchen at night, working past midnight.">
+                    </div>
+
+                    <div class="anchor-stat">
+                        <p class="stat-number">6.9<span class="stat-unit">h</span></p>
+                        <p class="stat-label">average sleep for American adults 26 to 64. The recommended minimum is 7 hours.<br><span class="stat-source">National Health and Nutrition Examination Survey.</span></p>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="chapter-flow">
+
+                <div class="flow-intro">
+                    <p>By middle age, insufficient sleep has settled into a plateau. The total duration stays roughly constant for forty years at just under seven hours a night, slightly above what young adults reported. But the underlying architecture of that sleep has fundamentally changed.</p>
+                </div>
+
+                <figure class="plate" id="plate-4-1">
+                    <div class="plate-canvas" id="canvas-4-1">
+                    </div>
+                    <figcaption class="plate-caption">Each adult is a single star. Distance from the moon equals hours short of the recommended seven and a half. The bulk of the population sits a full hour outside the recommended ring, creating a deficit that holds steady, on average, for the next four decades.</figcaption>
+                </figure>
+
+                <div class="flow-prose">
+                    <p>The body begins waking itself up at night. Sometimes outside causes like a child, a sudden noise, or an alarm trigger this. Often, the causes are internal: an early spike in stress hormones, a protesting digestive system, or a thought refusing to settle. The total hours might look reasonable, but the architecture beneath them does not.</p>
+                </div>
+
+                <figure class="plate" id="plate-4-2">
+                    <div class="plate-canvas plate-canvas--paper" id="canvas-4-2">
+                    </div>
+                    <figcaption class="plate-caption">This chart compares rested and deficit adults across five outcomes: stress, depression, blood pressure, nightly wakings, and diabetes risk. Every line slopes in the exact same direction. The chart's core argument lies in this unanimity rather than any single number.</figcaption>
+                </figure>
+
+                <div class="flow-prose">
+                    <p>Stress and depression both follow the curve of lost hours. The body that sleeps less is the body that copes worse. The body that copes worse is the body that sleeps less. It is the most familiar feedback loop in adult health.</p>
+                </div>
+
+                <figure class="plate" id="plate-4-3">
+                    <div class="plate-canvas plate-canvas--paper" id="canvas-4-3">
+                    </div>
+                    <figcaption class="plate-caption">Systolic blood pressure against sleep duration. Cardiovascular risk is the clearest physiological signature of chronic insufficient sleep in middle age.</figcaption>
+                </figure>
+
+                <div class="flow-prose flow-closing">
+                    <p>This plateau is not truly stable. It is a long, quiet stretch during which the bill finally comes due in the form of cardiovascular risk, metabolic dysregulation, and the slow dimming of attention. Four decades of insufficient sleep provides enough time for the body's small accommodations to permanently alter its shape.</p>
+                </div>
+
+            </div>
         </div>
+    </article>
 
-      </article>
+    <article class="chapter" id="chapter-5" data-chapter="5">
+        <div class="chapter-grid">
 
-      <!-- section break -->
-      <div class="chapter-break">
-        <div class="break-line"></div>
-      </div>
+            <aside class="chapter-anchor">
+                <div class="anchor-inner">
+                    <p class="chapter-numeral">V</p>
+                    <p class="chapter-kicker">age 65 and beyond</p>
+                    <h2 class="chapter-title">Senior</h2>
+                    <p class="chapter-epigraph">Older Americans do not sleep significantly less overall, but they do sleep in pieces. The night that was once a single block shatters into many short fragments, exacting a heavy toll on the brain.</p>
 
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- CHAPTER 2: TEENAGERS -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <article class="chapter" data-chapter="teenagers">
+                    <div class="anchor-illustration">
+                        <img src="Images/3_Senior.png" alt="An older adult walking with a cane in the early morning.">
+                    </div>
 
-        <div class="scroll-step">
-          <p class="step-text">No age group is losing more sleep than teenagers. Biological clock shifts, school start times, and screens have converged to produce a generation running on chronic deficit. The data is stark.</p>
+                    <div class="anchor-stat">
+                        <p class="stat-number">40<span class="stat-unit">%</span></p>
+                        <p class="stat-label">of Americans over 65 wake two or more times on a typical night. The body has trouble holding sleep together.<br><span class="stat-source">National Health and Aging Trends Study.</span></p>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="chapter-flow">
+
+                <div class="flow-intro">
+                    <p>In the long evening of life, the total time spent in bed often looks healthy on paper. Older adults spend nearly as much time in bed as younger adults do. However, their sleep efficiency (the actual fraction of that time spent asleep) begins to steadily fall.</p>
+                </div>
+
+                <figure class="plate" id="plate-5-1">
+                    <div class="plate-canvas" id="canvas-5-1">
+                    </div>
+                    <figcaption class="plate-caption">Each older adult is rendered not as a single star but as several scattered along their orbital arc, representing each piece of their broken night. A senior with one solid block of sleep appears whole. A senior whose night fragments into five pieces appears as five distinct, smaller stars. The chart's visual rendering is its own argument.</figcaption>
+                </figure>
+
+                <div class="flow-prose">
+                    <p>The night fragments. Each interruption is short, perhaps lasting only a few minutes, and the sleeper rarely remembers it by morning. However, the brain's nightly cleaning cycles completely depend on uninterrupted deep sleep, meaning they cannot finish what they started.</p>
+                </div>
+
+                <figure class="plate" id="plate-5-2">
+                    <div class="plate-canvas plate-canvas--paper" id="canvas-5-2">
+                    </div>
+                    <figcaption class="plate-caption">Five late-life outcomes, compared between older adults whose nights remain intact and those whose nights have fragmented. Every measure shifts in the same direction. The reader can read the chart in one glance: when continuity goes, the body's late functions go with it.</figcaption>
+                </figure>
+
+                <div class="flow-prose">
+                    <p>The link between sleep and cognition becomes one of the most consequential variables in late-life health. It is also highly modifiable, relying less on changing the total hours spent in bed and more on aggressively protecting sleep continuity.</p>
+                </div>
+
+                <figure class="plate" id="plate-5-3">
+                    <div class="plate-canvas plate-canvas--paper" id="canvas-5-3">
+                    </div>
+                    <figcaption class="plate-caption">Cognitive scores by total nightly sleep, in three bands. The ridge for short sleepers leans left, into the lower-cognition range. The ridge for long sleepers leans right, into the stronger range. The relationship between hours and cognition does not retire when the rest of life does.</figcaption>
+                </figure>
+
+                <div class="flow-prose flow-closing">
+                    <p>The architecture is not destroyed in this chapter. It has been wearing away, decade by decade, for years. By now what remains is a night of fragments, each too short to do the body's work.</p>
+                </div>
+
+            </div>
         </div>
+    </article>
 
-        <div class="scroll-step chart-step" data-chart="teens-sleep">
-          <h3 class="chart-title">Teen sleep hours, 2013–2023</h3>
-          <div class="chart-container" id="chart-teens-sleep"></div>
+    <section id="finale">
+        <div class="finale-inner">
+            <p class="finale-kicker">Where you fit</p>
+            <h2 class="finale-title">Your Place in the Sky</h2>
+            <p class="finale-subtitle">The lifespan, charted as a single continuous curve. Drag the slider to find your exact age. The number below estimates what your body has been owed since age six. This represents the cumulative cost of every short night, assuming you've slept like the average American.</p>
+
+            <div class="finale-controls">
+                <span class="finale-control-label">I am</span>
+                <input type="range" min="6" max="85" value="32" step="1" id="finale-age-slider" class="finale-slider">
+                <span class="finale-age-display" id="finale-age-display">32</span>
+                <span class="finale-control-label">years old</span>
+            </div>
+
+            <p class="finale-hint" id="finale-hint">drag the slider to find your age</p>
+
+            <div class="finale-canvas" id="finale-canvas">
+            </div>
+
+            <div class="finale-deficit">
+                <p class="finale-deficit-pre" id="finale-deficit-pre">By age 32, your body has likely been owed</p>
+                <p class="finale-deficit-number" id="finale-deficit-number">~ 200 days</p>
+                <p class="finale-deficit-post">of the sleep it asked for and did not receive.</p>
+            </div>
         </div>
+    </section>
 
-        <div class="scroll-step">
-          <p class="step-text">The mental health toll is the most dramatic of any age group. Teens who sleep fewer than 8 hours report feelings of sadness and hopelessness at nearly twice the rate of those meeting guidelines.</p>
+    <section id="closing">
+        <div class="closing-inner">
+
+            <div class="closing-claim">
+                <p class="closing-claim-text">At every life stage, between a third and three-quarters of Americans sleep less than the recommended minimum for their age. At every stage, the deprivation correlates with measurably worse mental and physical health.</p>
+                <p class="closing-claim-text">The body keeps the difference.</p>
+                <p class="closing-claim-text closing-final-claim">You can sleep on this. Most of us don't.</p>
+            </div>
+
+            <div class="closing-section">
+                <h3 class="closing-heading">A note on the data</h3>
+                <p class="closing-prose">The 7,500 lives in this piece are simulated. Each chapter's distributions are calibrated to published findings from federal health surveys: the National Survey of Children's Health (children), the CDC Youth Risk Behavior Survey (adolescents), the Behavioral Risk Factor Surveillance System (young adults), the National Health and Nutrition Examination Survey (adults), and the National Health and Aging Trends Study (older adults). The simulated rows let the piece visualize relationships at the scale of individual stars while preserving the population-level shapes those surveys report.</p>
+                <p class="closing-prose">Within-group relationships, such as the slope of attention against sleep duration in children, are calibrated to peer-reviewed effect sizes from published medical literature. Cumulative deficit calculations in the closing interactive use the recommended minimum hours for each age band (10 for children, 9 for adolescents, 8 for young adults, 7.5 for adults and older adults) and the group's average actual sleep, multiplied by the years a person has lived in that band.</p>
+                <p class="closing-prose">Numbers should be read as illustrative rather than diagnostic. Real human sleep varies widely from the simulated averages, and individual circumstances can produce very different trajectories.</p>
+            </div>
+
+            <div class="closing-section">
+                <h3 class="closing-heading">Sources</h3>
+                <ul class="closing-source-list">
+                    <li><span class="closing-source-name">National Survey of Children's Health (NSCH)</span>: HRSA Maternal and Child Health Bureau, 2020 cycle.</li>
+                    <li><span class="closing-source-name">CDC Youth Risk Behavior Survey (YRBS)</span>: Centers for Disease Control and Prevention, 2021 cycle.</li>
+                    <li><span class="closing-source-name">National Health and Nutrition Examination Survey (NHANES)</span>: CDC National Center for Health Statistics.</li>
+                    <li><span class="closing-source-name">Behavioral Risk Factor Surveillance System (BRFSS)</span>: CDC, state-level survey, 2022 cycle.</li>
+                    <li><span class="closing-source-name">National Health and Aging Trends Study (NHATS)</span>: Johns Hopkins Bloomberg School of Public Health.</li>
+                    <li><span class="closing-source-name">American Academy of Sleep Medicine</span>: consensus recommendations on sleep duration by age.</li>
+                </ul>
+            </div>
+
         </div>
+    </section>
 
-        <div class="scroll-step chart-step" data-chart="teens-mental">
-          <h3 class="chart-title">Mental health indicators among high school students</h3>
-          <div class="chart-container" id="chart-teens-mental"></div>
-        </div>
-
-        <div class="scroll-step">
-          <p class="step-text">The decline has not been equal. Boys started higher in 2013 and have fallen further. Girls were already sleeping less and have continued to drop — both now well below the 8-hour guideline.</p>
-        </div>
-
-        <div class="scroll-step chart-step" data-chart="teens-by-sex">
-          <h3 class="chart-title">% getting sufficient sleep by sex, 2013 vs 2023</h3>
-          <div class="chart-container" id="chart-teens-by-sex"></div>
-        </div>
-
-        <div class="scroll-step">
-          <p class="step-text">Physical activity also suffers — a feedback loop where tired teens exercise less, which makes sleep quality worse, which makes them more tired.</p>
-        </div>
-
-        <div class="scroll-step chart-step" data-chart="teens-physical">
-          <h3 class="chart-title">Physical activity rates by sleep sufficiency</h3>
-          <div class="chart-container" id="chart-teens-physical"></div>
-        </div>
-
-      </article>
-
-      <!-- section break -->
-      <div class="chapter-break">
-        <div class="break-line"></div>
-      </div>
-
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- CHAPTER 3: YOUNG ADULTS -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <article class="chapter" data-chapter="youngadults">
-
-        <div class="scroll-step">
-          <p class="step-text">Young adults face a transition: the mental health consequences of adolescent sleep deprivation don't disappear — they're joined by the first signs of physical consequences. Work, college, and social life keep the sleep debt growing.</p>
-        </div>
-
-        <div class="scroll-step chart-step" data-chart="youngadults-sleep">
-          <h3 class="chart-title">Short sleep prevalence, ages 18–34</h3>
-          <div class="chart-container" id="chart-youngadults-sleep"></div>
-        </div>
-
-        <div class="scroll-step">
-          <p class="step-text">Depression rates among chronically sleep-deprived young adults are significantly elevated. This age group also shows the sharpest response to even modest improvements in sleep duration.</p>
-        </div>
-
-        <div class="scroll-step chart-step" data-chart="youngadults-mental">
-          <h3 class="chart-title">Depression prevalence by sleep hours</h3>
-          <div class="chart-container" id="chart-youngadults-mental"></div>
-        </div>
-
-        <div class="scroll-step">
-          <p class="step-text">Physical health ratings begin to diverge. Young adults sleeping fewer than 6 hours are significantly more likely to rate their own health as fair or poor — a self-assessment that predicts longer-term outcomes.</p>
-        </div>
-
-        <div class="scroll-step chart-step" data-chart="youngadults-physical">
-          <h3 class="chart-title">Self-rated health by sleep category</h3>
-          <div class="chart-container" id="chart-youngadults-physical"></div>
-        </div>
-
-      </article>
-
-      <!-- section break -->
-      <div class="chapter-break">
-        <div class="break-line"></div>
-      </div>
-
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- CHAPTER 4: ADULTS -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <article class="chapter" data-chapter="adults">
-
-        <div class="scroll-step">
-          <p class="step-text">By middle age, sleep deprivation has had years to accumulate. The consequences shift from behavioral and mood-based to cardiovascular and metabolic — measurable in bloodwork and medical records.</p>
-        </div>
-
-        <div class="scroll-step chart-step" data-chart="adults-sleep">
-          <h3 class="chart-title">Sleep duration across the adult lifespan</h3>
-          <div class="chart-container" id="chart-adults-sleep"></div>
-        </div>
-
-        <div class="scroll-step">
-          <p class="step-text">Depression remains a significant correlate, but the strongest mental health signal at this stage is the compounding effect — adults who have been sleep-deprived since their twenties show persistently elevated risk.</p>
-        </div>
-
-        <div class="scroll-step chart-step" data-chart="adults-mental">
-          <h3 class="chart-title">Depression prevalence by sleep category</h3>
-          <div class="chart-container" id="chart-adults-mental"></div>
-        </div>
-
-        <div class="scroll-step">
-          <p class="step-text">Cardiovascular markers tell the clearest story. Blood pressure and blood sugar both show dose-response relationships with sleep duration — more deprivation, worse numbers.</p>
-        </div>
-
-        <div class="scroll-step chart-step" data-chart="adults-physical">
-          <h3 class="chart-title">Blood pressure and HbA1c by sleep hours</h3>
-          <div class="chart-container" id="chart-adults-physical"></div>
-        </div>
-
-        <div class="scroll-step chart-step" data-chart="adults-heatmap">
-          <h3 class="chart-title">Sleep and health outcomes — heatmap</h3>
-          <div class="chart-container" id="chart-adults-heatmap"></div>
-        </div>
-
-      </article>
-
-      <!-- section break -->
-      <div class="chapter-break">
-        <div class="break-line"></div>
-      </div>
-
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- CHAPTER 5: OLDER ADULTS -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <article class="chapter" data-chapter="olderadults">
-
-        <div class="scroll-step">
-          <p class="step-text">Among adults 65 and older, the sleep story shifts again. Total sleep time often increases — but quality degrades. Sleep disorders become common. And the consequences now include cognitive decline.</p>
-        </div>
-
-        <div class="scroll-step chart-step" data-chart="older-sleep">
-          <h3 class="chart-title">Sleep sufficiency rates, 65+</h3>
-          <div class="chart-container" id="chart-older-sleep"></div>
-        </div>
-
-        <div class="scroll-step">
-          <p class="step-text">Cognitive concern and depression rates among older adults track closely with sleep quality. The relationship between sleep disruption and dementia risk has become one of the most active areas of sleep research.</p>
-        </div>
-
-        <div class="scroll-step chart-step" data-chart="older-mental">
-          <h3 class="chart-title">Cognitive concern by sleep sufficiency</h3>
-          <div class="chart-container" id="chart-older-mental"></div>
-        </div>
-
-        <div class="scroll-step">
-          <p class="step-text">Physical health markers among older poor sleepers show elevated rates of cardiovascular disease, diabetes, and obesity — the accumulated cost of a lifetime of insufficient sleep.</p>
-        </div>
-
-        <div class="scroll-step chart-step" data-chart="older-physical">
-          <h3 class="chart-title">Chronic condition prevalence by sleep category</h3>
-          <div class="chart-container" id="chart-older-physical"></div>
-        </div>
-
-      </article>
-
-    </div>
-    <!-- end #scrolly-content -->
-
-  </main>
-  <!-- end #story -->
-
-
-
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script>
-var chapterData = {
-  children:    { svg:"Images/Child.svg",       alt:"Child",        ages:"Ages 6-12",  title:"Children",     stat:"Only 57% of children ages 6-12 meet the recommended 9-12 hours of sleep.",         intro:"Sleep shapes the developing brain more than any other age group. Short sleep in childhood is linked to attention disorders, behavioral problems, and obesity." },
-  teenagers:   { svg:"Images/Teenager.svg",    alt:"Teenager",     ages:"Ages 13-17", title:"Teenagers",    stat:"Over 77% of high school students sleep fewer than 8 hours on school nights.",        intro:"Teens face a perfect storm: biological clock shifts, early school start times, and screens. The mental health consequences are the most dramatic of any age group." },
-  youngadults: { svg:"Images/Young_Adult.svg", alt:"Young adult",  ages:"Ages 18-25", title:"Young Adults", stat:"35% of adults 18-34 report regularly getting fewer than 7 hours of sleep.",          intro:"Work, school, and social life compete with sleep. Mental health consequences carry over from adolescence, and the first physical warning signs begin to appear." },
-  adults:      { svg:"Images/Adult.svg",       alt:"Adult",        ages:"Ages 26-64", title:"Adults",       stat:"1 in 3 working-age adults in the US is chronically sleep-deprived.",                  intro:"By middle age, years of short sleep begin to show in cardiovascular markers, blood sugar levels, and metabolic health. The consequences are measurable in a blood test." },
-  olderadults: { svg:"Images/Senior.svg",      alt:"Older adult",  ages:"Ages 65+",   title:"Older Adults", stat:"50-60% of older adults experience significant sleep disruption.",                     intro:"Sleep architecture changes with age. Quality degrades even as time in bed increases. The most serious emerging risk: links between poor sleep and cognitive decline." }
-};
-
-var chartCounts = {
-  children:    3,
-  teenagers:   4,
-  youngadults: 3,
-  adults:      4,
-  olderadults: 3
-};
-
-var currentChapter = null;
-
-function updateStickyPanel(id) {
-  if (id === currentChapter) return;
-  currentChapter = id;
-  var d = chapterData[id];
-  if (!d) return;
-  var img = document.getElementById("chapter-svg");
-  img.style.opacity = "0";
-  setTimeout(function() { img.src = d.svg; img.alt = d.alt; img.style.opacity = "1"; }, 200);
-  document.getElementById("chapter-ages").textContent  = d.ages;
-  document.getElementById("chapter-title").textContent = d.title;
-  document.getElementById("chapter-stat").textContent  = d.stat;
-  document.getElementById("chapter-intro").textContent = d.intro;
-  var el = document.getElementById("chapter-progress");
-  el.innerHTML = "";
-  for (var i = 0; i < (chartCounts[id] || 0); i++) {
-    var dot = document.createElement("div");
-    dot.className = "progress-dot";
-    dot.dataset.index = i;
-    el.appendChild(dot);
-  }
-}
-
-function updateTimelineDot(id) {
-  document.querySelectorAll(".timeline-dot").forEach(function(btn) {
-    btn.classList.toggle("active", btn.dataset.chapter === id);
-  });
-}
-
-function updateProgressDots(id, idx) {
-  document.querySelectorAll(".progress-dot").forEach(function(dot) {
-    dot.classList.toggle("active", parseInt(dot.dataset.index) === idx);
-  });
-}
-
-document.querySelectorAll(".timeline-dot").forEach(function(btn) {
-  btn.addEventListener("click", function() {
-    var t = document.querySelector(".chapter[data-chapter='" + btn.dataset.chapter + "']");
-    if (t) t.scrollIntoView({ behavior:"smooth", block:"start" });
-  });
-});
-
-var chapterObs = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) {
-      updateStickyPanel(e.target.dataset.chapter);
-      updateTimelineDot(e.target.dataset.chapter);
-    }
-  });
-}, { rootMargin: "-5% 0px -40% 0px", threshold: 0 });
-
-document.querySelectorAll(".chapter").forEach(function(ch) {
-  chapterObs.observe(ch);
-});
-
-var stepObs = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (!e.isIntersecting) return;
-    var ch = e.target.closest(".chapter");
-    if (!ch) return;
-    var steps = ch.querySelectorAll(".chart-step");
-    updateProgressDots(ch.dataset.chapter, Array.prototype.indexOf.call(steps, e.target));
-  });
-}, { rootMargin: "-10% 0px -40% 0px", threshold: 0 });
-
-document.querySelectorAll(".chart-step").forEach(function(s) {
-  stepObs.observe(s);
-});
-
-updateStickyPanel("children");
-updateTimelineDot("children");
-  </script>
-  <script src="charts.js"></script>
-
-  <!-- CLOSING SECTION -->
-  <footer id="closing">
-    <div id="closing-inner">
-      <h2 id="closing-headline">Sleep is not a luxury. It's infrastructure.</h2>
-      <p id="closing-body">Across every stage of life — from the developing brain of a six-year-old to the aging mind of a seventy-year-old — sleep deprivation leaves a measurable mark. The consequences are not abstract. They show up in classrooms, in emergency rooms, in blood pressure readings, and in the gradual erosion of memory and cognition that comes with age.</p>
-      <p id="closing-body-2">The data collected tell a consistent story: we are a chronically under-slept country, and the cost compounds across a lifetime. Children who sleep less struggle more in school. Teenagers carry mental health burdens that follow them into adulthood. Working-age adults develop cardiovascular and metabolic conditions at measurably higher rates. And older adults face an accelerated risk of cognitive decline.</p>
-      <p id="closing-body-3">The good news is that sleep is modifiable. Unlike many health risk factors, it responds to behavioral change, policy reform, and public awareness. The first step is understanding the scale of the problem — which is what this data attempts to show.</p>
-      <div id="sources">
-        <h3>Data sources</h3>
-        <ul>
-          <li>CDC BRFSS 2022 — Behavioral Risk Factor Surveillance System</li>
-          <li>CDC YRBS 2023 — Youth Risk Behavior Survey</li>
-          <li>CDC NSCH 2022 — National Survey of Children's Health</li>
-          <li>NHANES 2017–2020 — National Health and Nutrition Examination Survey</li>
-          <li>Sabia et al. — Nature Communications 2021</li>
-          <li>Verlenden et al. — MMWR Supplement 2024</li>
-          <li>Claussen et al. — Preventing Chronic Disease 2023</li>
-        </ul>
-      </div>
-    </div>
-  </footer>
+    <script src="charts.js?v=8"></script>
+    <script src="timeline.js?v=8"></script>
 
 </body>
 </html>
